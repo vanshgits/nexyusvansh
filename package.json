@@ -1,0 +1,16 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "y"
+  },
+  "license": "MIT",
+  "author": "Aaliyah Ally, Nibras Khalid, Ved Bhimani, Vanshit Amin",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "y"
+  }
+}
