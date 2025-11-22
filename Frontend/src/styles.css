@@ -1,0 +1,195 @@
+/* ===== GLOBAL BASE ===== */
+
+:root {
+  /* Colors */
+  --dark: #36454F;
+  --primary: #3533CD;
+  --secondary: #18427D;
+  --white: #FAFAFA;
+
+  /* Fonts */
+  --heading-font: 'Montserrat', sans-serif;
+  --body-font: 'Lora', serif;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--white);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading-font);
+  color: var(--primary);
+}
+
+button {
+  font-family: var(--heading-font);
+}
+
+
+/* ===== NAVBAR (shared) ===== */
+
+.navbar-custom {
+  background-color: #0f3a8a;
+  padding: 1rem 3rem;
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+}
+
+.nav-link {
+  color: #ffffff !important;
+  margin: 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  color: #93c5fd !important;
+}
+.navbar .btn {
+  background-color: var(--white) !important;
+  color: var(--primary) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  padding: 0.45rem 1.4rem !important;
+  border-radius: 999px !important;
+  border: none !important;
+  font-size: 0.9rem !important;
+}
+
+.btn-login:hover {
+  background-color: #e5e7eb;
+}
+
+.btn-register-nav {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.45rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  margin-left: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.btn-register-nav:hover {
+  background-color: #111827;
+}
+
+/* ===== FOOTER (shared) ===== */
+
+.footer-custom {
+  background-color: #0f3a8a;
+  color: #ffffff;
+  padding: 2.2rem 0 1.2rem;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-section h5 {
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.footer-section a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #93c5fd;
+}
+
+/* footer social icons */
+.footer-social {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer-social-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.footer-social-btn.tiktok {
+  background-color: #ffffff;
+  color: #ff0050;
+}
+
+.footer-social-btn.linkedin {
+  background-color: #ffffff;
+  color: #0077b5;
+}
+
+.footer-social-btn.facebook {
+  background-color: #ffffff;
+  color: #1877f2;
+}
+
+.footer-social-btn.twitter {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.footer-copyright {
+  text-align: center;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  margin-top: 1.3rem;
+  font-size: 0.8rem;
+}
+
+/* ===== GLOBAL RESPONSIVE BITS ===== */
+
+/* Footer simplification on mobile */
+@media (max-width: 768px) {
+  .navbar-custom {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .footer-custom .row > .col-md-3:not(:first-child) {
+    display: none;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-copyright {
+    font-size: 0.75rem;
+  }
+}

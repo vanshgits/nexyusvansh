@@ -1,0 +1,102 @@
+<main class="auth-main">
+  <div class="auth-card">
+    <!-- LEFT PANEL -->
+    <section class="auth-left">
+      <h1>WELCOME BACK</h1>
+      <p class="auth-left-text">
+        Log in to access your tickets, saved events, and organizer tools.
+      </p>
+    </section>
+
+    <!-- RIGHT PANEL: LOGIN FORM -->
+    <section class="auth-right">
+      <h2>SIGN IN TO YOUR ACCOUNT</h2>
+      <p class="auth-subtitle">Enter your credentials to continue.</p>
+
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onLoginSubmit()"
+        class="auth-form"
+      >
+        <div
+          class="field-error mb-2"
+          *ngIf="loginForm.invalid && loginForm.touched"
+        >
+          Please fill in all required fields.
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email Address</label>
+          <input class="form-control" type="email" formControlName="email" />
+          <div
+            class="field-error"
+            *ngIf="lf['email'].touched && lf['email'].hasError('required')"
+          >
+            Email is required.
+          </div>
+          <div
+            class="field-error"
+            *ngIf="lf['email'].touched && lf['email'].hasError('email')"
+          >
+            Enter a valid email.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Password</label>
+          <input
+            class="form-control"
+            type="password"
+            formControlName="password"
+          />
+          <div
+            class="field-error"
+            *ngIf="lf['password'].touched && lf['password'].hasError('required')"
+          >
+            Password is required.
+          </div>
+        </div>
+
+        <div class="field-error mb-2" *ngIf="loginServerError">
+          {{ loginServerError }}
+        </div>
+
+        <button
+          class="btn btn-primary auth-submit-btn"
+          type="submit"
+          [disabled]="loginForm.invalid || isLoggingIn"
+        >
+          {{ isLoggingIn ? 'Logging in...' : 'Log In' }}
+        </button>
+
+        <p class="auth-or">OR</p>
+
+        <div class="social-row">
+          <a
+            href="http://localhost:3000/api/auth/google"
+            class="social-btn google"
+          >
+            <i class="fab fa-google"></i>
+          </a>
+          <a
+            href="http://localhost:3000/api/auth/github"
+            class="social-btn github"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="http://localhost:3000/api/auth/facebook"
+            class="social-btn fb"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+
+        <div class="auth-switch">
+          <span>Don’t have an account?</span>
+          <a routerLink="/register" class="switch-link">Create one</a>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>

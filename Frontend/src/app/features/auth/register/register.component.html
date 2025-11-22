@@ -1,0 +1,153 @@
+<main class="auth-main">
+  <div class="auth-card">
+    <!-- LEFT PANEL -->
+    <section class="auth-left">
+      <h1>WELCOME</h1>
+      <p class="auth-left-text">
+        Explore concerts, workshops, festivals, and community meetups — all
+        created by local organizers. Join the vibe.
+      </p>
+      <p>Support local talent. Experience more.</p>
+    </section>
+
+    <!-- RIGHT PANEL: REGISTER FORM -->
+    <section class="auth-right">
+      <h2>CREATE AN ACCOUNT</h2>
+      <p class="auth-subtitle">
+        Fill in your details to get started with Nexyus.
+      </p>
+
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="onRegisterSubmit()"
+        class="auth-form"
+      >
+        <!-- GLOBAL ERROR -->
+        <div
+          class="field-error mb-2"
+          *ngIf="registerForm.invalid && registerForm.touched"
+        >
+          Please fill in all required fields correctly.
+        </div>
+
+        <!-- SERVER ERROR -->
+        <div class="field-error mb-2" *ngIf="serverError">
+          {{ serverError }}
+        </div>
+
+        <!-- SUCCESS MESSAGE -->
+        <div class="field-success mb-2" *ngIf="successMessage">
+          {{ successMessage }}
+        </div>
+
+        <!-- FIRST + LAST NAME -->
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label class="form-label">First Name</label>
+            <input class="form-control" formControlName="firstName" />
+            <div
+              class="field-error"
+              *ngIf="rf['firstName'].touched && rf['firstName'].hasError('required')"
+            >
+              First name is required.
+            </div>
+          </div>
+
+          <div class="col-6 mb-3">
+            <label class="form-label">Last Name</label>
+            <input class="form-control" formControlName="lastName" />
+            <div
+              class="field-error"
+              *ngIf="rf['lastName'].touched && rf['lastName'].hasError('required')"
+            >
+              Last name is required.
+            </div>
+          </div>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="mb-3">
+          <label class="form-label">Email Address</label>
+          <input
+            class="form-control"
+            formControlName="email"
+            type="email"
+          />
+          <div
+            class="field-error"
+            *ngIf="rf['email'].touched && rf['email'].hasError('required')"
+          >
+            Email is required.
+          </div>
+          <div
+            class="field-error"
+            *ngIf="rf['email'].touched && rf['email'].hasError('email')"
+          >
+            Please enter a valid email.
+          </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="mb-4">
+          <label class="form-label">Password</label>
+          <input
+            class="form-control"
+            formControlName="password"
+            type="password"
+          />
+          <div
+            class="field-error"
+            *ngIf="rf['password'].touched && rf['password'].hasError('required')"
+          >
+            Password is required.
+          </div>
+          <div
+            class="field-error"
+            *ngIf="rf['password'].touched && rf['password'].hasError('minlength')"
+          >
+            Password must be at least 6 characters.
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <button
+          class="btn btn-primary auth-submit-btn"
+          type="submit"
+          [disabled]="registerForm.invalid || isRegistering"
+        >
+          {{ isRegistering ? 'Registering...' : 'Register' }}
+        </button>
+
+        <p class="auth-or">OR</p>
+
+        <!-- SOCIAL LOGIN -->
+        <div class="social-row">
+          <a
+            href="http://localhost:3000/api/auth/google"
+            class="social-btn google"
+          >
+            <i class="fab fa-google"></i>
+          </a>
+          <a
+            href="http://localhost:3000/api/auth/github"
+            class="social-btn github"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="http://localhost:3000/api/auth/facebook"
+            class="social-btn fb"
+          >
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+
+        <!-- SWITCH TO LOGIN -->
+        <div class="auth-switch">
+          <span>Already registered?</span>
+          <a routerLink="/login" class="switch-link">Log In</a>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
